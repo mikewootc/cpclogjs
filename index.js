@@ -45,11 +45,11 @@ class LogDummy {
 function getFunctionName() {
     const s = (new Error()).stack;
     //console.log(s);
-    const funcs = /at getFunctionName[^\n]*\n[^\n]*\n[^\n]*\n\s*at (\S+)/.exec(s);
+    const funcs = /at getFunctionName[^\n]*\n[^\n]*\n[^\n]*\n\s*at (\S+) *\(/.exec(s);
     //const lines = /at getFunctionName[^\n]*\n[^\n]*\n\s*at [^\n]*:(.+)/.exec(s);
     //console.log(funcs);
     //console.log(lines);
-    let f = 'Unknown';
+    let f = '----';
     let l = 0;
     if (funcs) {
         f = funcs[1];

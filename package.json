@@ -1,6 +1,6 @@
 {
   "name": "cpclog",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Cross platform colorful log for js.",
   "main": "index.js",
   "scripts": {
