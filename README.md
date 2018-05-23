@@ -8,6 +8,7 @@ A cross platform(node and webpacked-browser) colorful log for js.
 
 # Usage
 
+``` javascript
 
     const Logger = require('../index.js');
 
@@ -39,6 +40,8 @@ A cross platform(node and webpacked-browser) colorful log for js.
     }
 
     testLog();
+
+```
 
 # Demo
 
