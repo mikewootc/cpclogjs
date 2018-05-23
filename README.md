@@ -15,6 +15,8 @@ A cross platform(node and webpacked-browser) colorful log for js.
 
     function testLog() {
         let segments = ['string:', 'hello world', ', number:', 123, ', array:', [4, 5], ', obj:', {a: 1, b: 'hello'}];
+
+        // With color
         logger.info(Logger.RED         , '[RED      ]', ...segments);
         logger.info(Logger.RED_B       , '[RED_B    ]', ...segments);
         logger.info(Logger.GREEN       , '[GREEN    ]', ...segments);
@@ -28,6 +30,7 @@ A cross platform(node and webpacked-browser) colorful log for js.
         logger.info(Logger.CYAN        , '[CYAN     ]', ...segments);
         logger.info(Logger.CYAN_B      , '[CYAN_B   ]', ...segments);
 
+        // With level
         logger.error('This is a error');
         logger.warn('This is a warning');
         logger.info('This is a info');
