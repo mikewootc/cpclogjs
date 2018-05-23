@@ -71,7 +71,8 @@ class LogWrapper {
         let format = '';
         for (var i = 0; i < args.length; i++) {
             if (i == 0) {
-                format += '[' + this.MODULE_TAG + ' ' + getFunctionName() + ']';
+                //format += '[' + this.MODULE_TAG + ' ' + getFunctionName() + ']';
+                format += '[' + this.MODULE_TAG + ']';
             }
 
             if (typeof(args[i]) == 'string' && args[i].indexOf('[') >= 0) {
