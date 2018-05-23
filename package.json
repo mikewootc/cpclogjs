@@ -4,6 +4,8 @@
   "description": "Cross platform colorful log for js.",
   "main": "index.js",
   "scripts": {
+    "pack": "cd test; webpack --watch --devtool inline-source-map",
+    "server": "cd test; browser-sync start --server --files '**/*.html, **/*.css, **/*.js' --reload-delay 1000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

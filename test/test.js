@@ -1,12 +1,12 @@
 
 
-const Logger = require('../index.js');
 //import Logger from './Logger.js'
+const Logger = require('../index.js');
 
 const logger = Logger.createWrapper('TestLog', Logger.LEVEL_TRACE);
 
 function testLog() {
-    let segments = ['string:', 'hello world', ', number:', 123, ', array:', [4, 5, 6, 7], ', obj:', {a: 1, b: 2, c: 'hello'}];
+    let segments = ['string:', 'hello world', ', number:', 123, ', array:', [4, 5], ', obj:', {a: 1, b: 'hello'}];
     logger.info(Logger.RED         , '[RED      ]', ...segments);
     logger.info(Logger.RED_B       , '[RED_B    ]', ...segments);
     logger.info(Logger.GREEN       , '[GREEN    ]', ...segments);
