@@ -30,6 +30,7 @@ A cross platform(node and webpacked-browser) colorful log for js.
         logger.info(Logger.MAGENTA_B   , '[MAGENTA_B]', ...segments);
         logger.info(Logger.CYAN        , '[CYAN     ]', ...segments);
         logger.info(Logger.CYAN_B      , '[CYAN_B   ]', ...segments);
+        logger.info('Multi color in one line:', Logger.RED_B, 'RED_B,', Logger.GREEN_B, 'GREEN_B,', Logger.BLUE_B, 'BLUE_B,', Logger.CLR, 'and no color');
 
         // With level
         logger.error('This is a error');
@@ -43,14 +44,18 @@ A cross platform(node and webpacked-browser) colorful log for js.
 
 ```
 
-Note: because yellow in white background(in browser) is hard to be seen, So it's set to be
-inverted. You can change it by your own color like:
+**Note:** because yellow in white background(in browser) is hard to be seen, So it's set to be
+inverted. If you don't like it, you can change it easily by your own color like:
 
-    Logger.BR_YELLOW   = 'color: darkorange';
+    // Add this before logging:
+    Logger.BR_YELLOW   = 'color: darkorange';   // 'BR_' prefix means 'browser'
     Logger.BR_YELLOW_B = 'color: darkorange; font-weight:bold';
 
+    // Then log it:
     logger.info(Logger.YELLOW      , '[YELLOW   ]', 'something yellow to show');
     logger.info(Logger.YELLOW_B    , '[YELLOW_B ]', 'something yellow-bold to show');
+
+You can also use this way to override other default colors.
 
 # Demo
 
