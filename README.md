@@ -43,7 +43,14 @@ A cross platform(node and webpacked-browser) colorful log for js.
 
 ```
 
-Note: because yellow in white background is hard to be seen, So it's set to be inverted.
+Note: because yellow in white background(in browser) is hard to be seen, So it's set to be
+inverted. You can change it by your own color like:
+
+    Logger.BR_YELLOW   = 'color: darkorange';
+    Logger.BR_YELLOW_B = 'color: darkorange; font-weight:bold';
+
+    logger.info(Logger.YELLOW      , '[YELLOW   ]', 'something yellow to show');
+    logger.info(Logger.YELLOW_B    , '[YELLOW_B ]', 'something yellow-bold to show');
 
 # Demo
 

@@ -98,20 +98,20 @@ class LogWrapper {
     transColor2Browser(color) {
         if (env == 'browser') {
             switch (color) {
-                case Logger.RED       : return 'color: red';
-                case Logger.RED_B     : return 'color: red; font-weight:bold;';
-                case Logger.GREEN     : return 'color: green';
-                case Logger.GREEN_B   : return 'color: green; font-weight:bold;';
-                case Logger.YELLOW    : return 'background: #ffa';
-                case Logger.YELLOW_B  : return 'background: #ff0; font-weight:bold;';
-                case Logger.BLUE      : return 'color: blue';
-                case Logger.BLUE_B    : return 'color: blue; font-weight:bold;';
-                case Logger.MAGENTA   : return 'color: magenta';
-                case Logger.MAGENTA_B : return 'color: magenta; font-weight:bold;';
-                case Logger.CYAN      : return 'color: #08f';
-                case Logger.CYAN_B    : return 'color: #08f; font-weight:bold;';
-                case Logger.DARK      : return 'color: #888';
-                default               : return 'color: #888';
+                case Logger.RED       : return Logger.BR_RED      ;
+                case Logger.RED_B     : return Logger.BR_RED_B    ;
+                case Logger.GREEN     : return Logger.BR_GREEN    ;
+                case Logger.GREEN_B   : return Logger.BR_GREEN_B  ;
+                case Logger.YELLOW    : return Logger.BR_YELLOW   ;
+                case Logger.YELLOW_B  : return Logger.BR_YELLOW_B ;
+                case Logger.BLUE      : return Logger.BR_BLUE     ;
+                case Logger.BLUE_B    : return Logger.BR_BLUE_B   ;
+                case Logger.MAGENTA   : return Logger.BR_MAGENTA  ;
+                case Logger.MAGENTA_B : return Logger.BR_MAGENTA_B;
+                case Logger.CYAN      : return Logger.BR_CYAN     ;
+                case Logger.CYAN_B    : return Logger.BR_CYAN_B   ;
+                case Logger.DARK      : return Logger.BR_DARK     ;
+                default               : return Logger.BR_CLR      ;
             }
         } else {
             return color;
@@ -198,5 +198,35 @@ Logger.CYAN_B       = '[01;36m';
 Logger.DARK         = '[02;37m';
 Logger.CLR          = '[0m';
 
+Logger.BR_RED       = 'color: red';
+Logger.BR_RED_B     = 'color: red; font-weight:bold;';
+Logger.BR_GREEN     = 'color: green';
+Logger.BR_GREEN_B   = 'color: green; font-weight:bold;';
+Logger.BR_YELLOW    = 'background: #ffa';
+Logger.BR_YELLOW_B  = 'background: #ff0; font-weight:bold;';
+Logger.BR_BLUE      = 'color: blue';
+Logger.BR_BLUE_B    = 'color: blue; font-weight:bold;';
+Logger.BR_MAGENTA   = 'color: magenta';
+Logger.BR_MAGENTA_B = 'color: magenta; font-weight:bold;';
+Logger.BR_CYAN      = 'color: #08f';
+Logger.BR_CYAN_B    = 'color: #08f; font-weight:bold;';
+Logger.BR_DARK      = 'color: #888';
+Logger.BR_CLR       = '';
+
+
+
+
+
+
+
+
+
+
+
+
 module.exports = Logger;
 //export default ;
+
+
+// refs:
+// https://www.w3schools.com/colors/colors_names.asp

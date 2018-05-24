@@ -12,7 +12,7 @@ function testLog() {
     logger.info(Logger.GREEN       , '[GREEN    ]', ...segments);
     logger.info(Logger.GREEN_B     , '[GREEN_B  ]', ...segments);
     logger.info(Logger.YELLOW      , '[YELLOW   ]', ...segments);
-    logger.info(Logger.YELLOW_B    , '[YELLOW_B ]', ...segments);
+    logger.info(Logger.YELLOW_B    , '[YELLOW_B ]', ...segments, Logger.BLUE_B, 'something else', Logger.CLR, 'No color');
     logger.info(Logger.BLUE        , '[BLUE     ]', ...segments);
     logger.info(Logger.BLUE_B      , '[BLUE_B   ]', ...segments);
     logger.info(Logger.MAGENTA     , '[MAGENTA  ]', ...segments);
