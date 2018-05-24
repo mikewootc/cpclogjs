@@ -43,6 +43,8 @@ A cross platform(node and webpacked-browser) colorful log for js.
 
 ```
 
+Note: because yellow in white background is hard to be seen, So it's set to be inverted.
+
 # Demo
 
 In browser:

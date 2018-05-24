@@ -98,18 +98,18 @@ class LogWrapper {
     transColor2Browser(color) {
         if (env == 'browser') {
             switch (color) {
-                case Logger.RED       : return 'color: #800';
-                case Logger.RED_B     : return 'color: #f00';
-                case Logger.GREEN     : return 'color: #080';
-                case Logger.GREEN_B   : return 'color: #0c0';
-                case Logger.YELLOW    : return 'color: #880';
-                case Logger.YELLOW_B  : return 'color: #cc0';
-                case Logger.BLUE      : return 'color: #008';
-                case Logger.BLUE_B    : return 'color: #00f';
-                case Logger.MAGENTA   : return 'color: #808';
-                case Logger.MAGENTA_B : return 'color: #f0f';
-                case Logger.CYAN      : return 'color: #04c';
-                case Logger.CYAN_B    : return 'color: #08f';
+                case Logger.RED       : return 'color: red';
+                case Logger.RED_B     : return 'color: red; font-weight:bold;';
+                case Logger.GREEN     : return 'color: green';
+                case Logger.GREEN_B   : return 'color: green; font-weight:bold;';
+                case Logger.YELLOW    : return 'background: #ffa';
+                case Logger.YELLOW_B  : return 'background: #ff0; font-weight:bold;';
+                case Logger.BLUE      : return 'color: blue';
+                case Logger.BLUE_B    : return 'color: blue; font-weight:bold;';
+                case Logger.MAGENTA   : return 'color: magenta';
+                case Logger.MAGENTA_B : return 'color: magenta; font-weight:bold;';
+                case Logger.CYAN      : return 'color: #08f';
+                case Logger.CYAN_B    : return 'color: #08f; font-weight:bold;';
                 case Logger.DARK      : return 'color: #888';
                 default               : return 'color: #888';
             }
