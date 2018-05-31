@@ -2,6 +2,8 @@
 
 A cross platform(node and webpacked-browser) colorful log for js.
 
+github: [https://github.com/mikewootc/cpclogjs](https://github.com/mikewootc/cpclogjs)
+
 # Install
 
     npm install cpclog.js
