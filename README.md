@@ -12,7 +12,7 @@ github: [https://github.com/mikewootc/cpclogjs](https://github.com/mikewootc/cpc
 
 ``` javascript
 
-    const Logger = require('../index.js');
+    const Logger = require('cpclog');
 
     const logger = Logger.createWrapper('TestLog', Logger.LEVEL_TRACE);
 
