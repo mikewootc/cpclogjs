@@ -3,6 +3,7 @@
 //import Logger from './Logger.js'
 const Logger = require('../index.js');
 
+//Logger.setEnv('browser');
 const logger = Logger.createWrapper('TestLog', Logger.LEVEL_TRACE);
 
 function testLog() {

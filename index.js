@@ -8,13 +8,20 @@ if (typeof window != 'undefined') {
 }
 
 class Logger {
-
     static createDummy() {
         return new LogDummy();
     }
 
     static createWrapper(tag, level) {
         return new LogWrapper(tag, level);
+    }
+
+    static setLogger() {
+        return new LogDummy();
+    }
+
+    static setEnv(e) {
+        env = e;
     }
 
     constructor() {
