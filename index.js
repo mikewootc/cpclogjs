@@ -7,8 +7,6 @@ if (typeof window != 'undefined') {
     env = 'node';
 }
 
-let cpclogTagMap = {};
-
 class Logger {
     static createDummy() {
         return new LogDummy();
@@ -23,7 +21,7 @@ class Logger {
             let logger = new LogWrapper(tag, level);
 
             if (tag) {
-                cpclogTagMap[tag] = logger;
+                Logger.tagMap[tag] = logger;
             }
             return logger;
         } catch(err) {
@@ -40,8 +38,8 @@ class Logger {
             return; // Do not throw error, just no adjust.
         }
 
-        if (cpclogTagMap[tag]) {
-            cpclogTagMap[tag].level = level;
+        if (Logger.tagMap[tag]) {
+            Logger.tagMap[tag].level = level;
         }
     }
 
@@ -50,9 +48,9 @@ class Logger {
             return; // Do not throw error, just no adjust.
         }
 
-        for (let tag in cpclogTagMap) {
-            if (cpclogTagMap[tag]) {
-                cpclogTagMap[tag].level = level;
+        for (let tag in Logger.tagMap) {
+            if (Logger.tagMap[tag]) {
+                Logger.tagMap[tag].level = level;
             }
         }
     }
@@ -69,6 +67,9 @@ class Logger {
         //super();
     }
 }
+
+Logger.tagMap = {};
+
 
 class LogDummy {
     constructor() {
