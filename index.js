@@ -7,13 +7,42 @@ if (typeof window != 'undefined') {
     env = 'node';
 }
 
+let cpclogTagMap = {};
+
 class Logger {
     static createDummy() {
         return new LogDummy();
     }
 
     static createWrapper(tag, level) {
-        return new LogWrapper(tag, level);
+        try {
+            if (!tag) {
+                throw new Error('NoTagError');
+            }
+
+            let logger = new LogWrapper(tag, level);
+
+            if (tag) {
+                cpclogTagMap[tag] = logger;
+            }
+            return logger;
+        } catch(err) {
+            throw err;
+        }
+    }
+
+    static adjustTag(tag, level) {
+        if (!tag) {
+            return; // Do not throw error, just no adjust.
+        }
+
+        if (!level || isNaN(level)) {
+            return; // Do not throw error, just no adjust.
+        }
+
+        if (cpclogTagMap[tag]) {
+            cpclogTagMap[tag].level = level;
+        }
     }
 
     static setLogger() {
