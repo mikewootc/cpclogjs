@@ -45,6 +45,18 @@ class Logger {
         }
     }
 
+    static adjustAllLevel(level) {
+        if (!level || isNaN(level)) {
+            return; // Do not throw error, just no adjust.
+        }
+
+        for (let tag in cpclogTagMap) {
+            if (cpclogTagMap[tag]) {
+                cpclogTagMap[tag].level = level;
+            }
+        }
+    }
+
     static setLogger() {
         return new LogDummy();
     }

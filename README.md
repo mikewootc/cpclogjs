@@ -72,7 +72,7 @@ You can also use this way to override other default colors.
 
 # API
 
-### Logger.createWrapper(tag, level)
+## Logger.createWrapper(tag, level)
 
 **tag**: (REQUESTED) the tag for the created wrapper logger, and would be shown in every line of the output log.
 
@@ -86,9 +86,9 @@ This argument should be a string(which is also considered as inner map-key of lo
 * Logger.LEVEL_WARN 
 * Logger.LEVEL_ERROR
 
-### Logger.adjustTag(tag, level)
+## Logger.adjustTag(tag, level)
 
-This static function adjust the log level for the logger which created by Logger.createWrapper()
+This static function adjust the log level for the logger which created by Logger.createWrapper().
 
 **tag**: specify the logger's tag, should be same as in Logger.createWrapper().
 
@@ -102,3 +102,15 @@ e.g.:
 
 ```
 
+## Logger.adjustAllLevel(level)
+
+This static function adjust the log level for all loggers which created by Logger.createWrapper().
+
+**level**: specify the logger's new log level.
+
+
+``` javascript
+
+    Logger.adjustAllLevel(Logger.LEVEL_WARN);
+
+```

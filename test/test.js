@@ -6,6 +6,7 @@ const M1 = require('./M1.js');
 
 //Logger.setEnv('node');
 const logger = Logger.createWrapper('TestLog', Logger.LEVEL_TRACE);
+const logger2 = Logger.createWrapper('TestLog2', Logger.LEVEL_TRACE);
 
 function testLog() {
     console.log('Test level =====================================================================');
@@ -46,3 +47,18 @@ logger.warn('This is a warning');
 logger.info('This is a info');
 logger.debug('This is a debug');
 logger.trace('This is a trace');
+
+console.log('Test adjust all level ==========================================================');
+console.log('Should has just warn and error here:');
+Logger.adjustAllLevel(Logger.LEVEL_WARN);
+logger.error('This is a error');
+logger.warn('This is a warning');
+logger.info('This is a info');
+logger.debug('This is a debug');
+logger.trace('This is a trace');
+
+logger2.error('This is a error 2');
+logger2.warn('This is a warning 2');
+logger2.info('This is a info 2');
+logger2.debug('This is a debug 2');
+logger2.trace('This is a trace 2');
