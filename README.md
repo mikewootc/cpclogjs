@@ -24,41 +24,33 @@ In node:
 # Usage
 
 e.g.:
-
 ``` javascript
-
     const Logger = require('cpclog');
     const logger = Logger.createWrapper('LogTestTag', Logger.LEVEL_TRACE);
 
-    function testLog() {
-        // With level
-        logger.error('This is a error');
-        logger.warn('This is a warning');
-        logger.info('This is a info');
-        logger.debug('This is a debug');
-        logger.trace('This is a trace');
+    // With level
+    logger.error('This is a error');
+    logger.warn('This is a warning');
+    logger.info('This is a info');
+    logger.debug('This is a debug');
+    logger.trace('This is a trace');
 
-        // With color
-        let segments = ['string:', 'hello world', ', number:', 123, ', array:', [4, 5], ', obj:', {a: 1, b: 'hello'}];
+    // With color
+    let segments = ['string:', 'hello world', ', number:', 123, ', array:', [4, 5], ', obj:', {a: 1, b: 'hello'}];
 
-        logger.info(Logger.RED         , '[RED      ]', ...segments);
-        logger.info(Logger.RED_B       , '[RED_B    ]', ...segments);
-        logger.info(Logger.GREEN       , '[GREEN    ]', ...segments);
-        logger.info(Logger.GREEN_B     , '[GREEN_B  ]', ...segments);
-        logger.info(Logger.YELLOW      , '[YELLOW   ]', ...segments);
-        logger.info(Logger.YELLOW_B    , '[YELLOW_B ]', ...segments);
-        logger.info(Logger.BLUE        , '[BLUE     ]', ...segments);
-        logger.info(Logger.BLUE_B      , '[BLUE_B   ]', ...segments);
-        logger.info(Logger.MAGENTA     , '[MAGENTA  ]', ...segments);
-        logger.info(Logger.MAGENTA_B   , '[MAGENTA_B]', ...segments);
-        logger.info(Logger.CYAN        , '[CYAN     ]', ...segments);
-        logger.info(Logger.CYAN_B      , '[CYAN_B   ]', ...segments);
-        logger.info('Multi color in one line:', Logger.RED_B, 'RED_B,', Logger.GREEN_B, 'GREEN_B,', Logger.BLUE_B, 'BLUE_B,', Logger.CLR, 'and no color');
-
-    }
-
-    testLog();
-
+    logger.info(Logger.RED         , '[RED      ]', ...segments);
+    logger.info(Logger.RED_B       , '[RED_B    ]', ...segments);
+    logger.info(Logger.GREEN       , '[GREEN    ]', ...segments);
+    logger.info(Logger.GREEN_B     , '[GREEN_B  ]', ...segments);
+    logger.info(Logger.YELLOW      , '[YELLOW   ]', ...segments);
+    logger.info(Logger.YELLOW_B    , '[YELLOW_B ]', ...segments);
+    logger.info(Logger.BLUE        , '[BLUE     ]', ...segments);
+    logger.info(Logger.BLUE_B      , '[BLUE_B   ]', ...segments);
+    logger.info(Logger.MAGENTA     , '[MAGENTA  ]', ...segments);
+    logger.info(Logger.MAGENTA_B   , '[MAGENTA_B]', ...segments);
+    logger.info(Logger.CYAN        , '[CYAN     ]', ...segments);
+    logger.info(Logger.CYAN_B      , '[CYAN_B   ]', ...segments);
+    logger.info('Multi color in one line:', Logger.RED_B, 'RED_B,', Logger.GREEN_B, 'GREEN_B,', Logger.BLUE_B, 'BLUE_B,', Logger.CLR, 'and no color');
 ```
 
 **Note:** because yellow in white background(in browser) is hard to be seen, So it's set to be
