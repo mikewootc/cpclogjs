@@ -18,7 +18,13 @@ class Logger {
                 throw new Error('NoTagError');
             }
 
-            let logger = new LogWrapper(tag, level);
+            let logger;
+            logger = new LogWrapper(tag, level);
+            //if (Logger.WrapperName == 'winston') {
+            //    logger = new 
+            //} else {
+            //    logger = new LogWrapper(tag, level);
+            //}
 
             if (tag) {
                 Logger.tagMap[tag] = logger;
@@ -57,6 +63,10 @@ class Logger {
 
     static setLogger() {
         return new LogDummy();
+    }
+
+    static setLoggerInstance(ins) {
+        Logger.loggerInstance = ins;
     }
 
     static setEnv(e) {
@@ -185,7 +195,7 @@ class LogWrapper {
             args = [Logger.RED_B, ...args];
             const fmt = this.getFormat(args);
             const segs = this.getSegments(args);
-            console.log(fmt, ...segs);
+            Logger.loggerInstance.error(fmt, ...segs);
         }
     }
 
@@ -195,7 +205,7 @@ class LogWrapper {
             args = [Logger.YELLOW_B, ...args];
             const fmt = this.getFormat(args);
             const segs = this.getSegments(args);
-            console.log(fmt, ...segs);
+            Logger.loggerInstance.warn(fmt, ...segs);
         }
     }
 
@@ -203,7 +213,7 @@ class LogWrapper {
         if (this.level >= Logger.LEVEL_INFO) {
             const fmt = this.getFormat(args);
             const segs = this.getSegments(args);
-            console.log(fmt, ...segs);
+            Logger.loggerInstance.info(fmt, ...segs);
         }
     }
 
@@ -211,7 +221,7 @@ class LogWrapper {
         if (this.level >= Logger.LEVEL_DEBUG) {
             const fmt = this.getFormat(args);
             const segs = this.getSegments(args);
-            console.log(fmt, ...segs);
+            Logger.loggerInstance.debug(fmt, ...segs);
         }
     }
 
@@ -222,7 +232,7 @@ class LogWrapper {
             args = [Logger.DARK, ...args];
             const fmt = this.getFormat(args);
             const segs = this.getSegments(args);
-            console.log(fmt, ...segs);
+            Logger.loggerInstance.debug(fmt, ...segs);
         }
     }
 }
@@ -267,10 +277,8 @@ Logger.BR_CLR       = '';
 
 
 
-
-
-
-
+//Logger.WrapperName = 'default';
+Logger.loggerInstance = console;
 
 
 module.exports = Logger;
