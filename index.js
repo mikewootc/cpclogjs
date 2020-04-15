@@ -73,6 +73,19 @@ class Logger {
         env = e;
     }
 
+    /**
+     * config
+     *
+     * @static
+     * @param {Object} config
+     * @param {boolean} config.showDate
+     * @returns {undefined}
+     */
+    static setConfig(config) {
+        Logger.config = config;
+        //return new LogDummy();
+    }
+
     constructor() {
         //super();
     }
@@ -128,6 +141,10 @@ class LogWrapper {
 
     getFormat(args) {
         let format = '';
+        if (Logger.config && Logger.config.showDate) {
+            format += new Date().toLocaleString({weekday: "long", year: "numeric", month: "2-digit", day: "2-digit"}) + ' ';
+        }
+
         for (var i = 0; i < args.length; i++) {
             if (i == 0) {
                 //format += '[' + this.MODULE_TAG + ' ' + getFunctionName() + ']';

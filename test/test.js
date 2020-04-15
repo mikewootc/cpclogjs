@@ -8,6 +8,8 @@ const M1 = require('./M1.js');
 const logger = Logger.createWrapper('TestLog', Logger.LEVEL_TRACE);
 const logger2 = Logger.createWrapper('TestLog2', Logger.LEVEL_TRACE);
 
+Logger.setConfig({showDate: true});
+
 function testLog() {
     console.log('Test level =====================================================================');
     logger.error('This is a error');
