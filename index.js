@@ -233,7 +233,7 @@ class LogWrapper {
             const fmt = this.getFormat(args);
             const segs = this.getSegments(args);
             //Logger.loggerInstance.debug(fmt, ...segs);
-            if (Logger.loggerInstance.trace) {
+            if (Logger.loggerInstance.trace && Logger.loggerInstance != console) {
                 Logger.loggerInstance.trace(fmt, ...segs);
             } else {
                 Logger.loggerInstance.debug(fmt, ...segs);
