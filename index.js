@@ -238,7 +238,11 @@ class LogWrapper {
         if (this.level >= Logger.LEVEL_DEBUG) {
             const fmt = this.getFormat(args);
             const segs = this.getSegments(args);
-            Logger.loggerInstance.debug(fmt, ...segs);
+            if (Logger.loggerInstance == console) {
+                console.log(fmt, ...segs);
+            } else {
+                Logger.loggerInstance.debug(fmt, ...segs);
+            }
         }
     }
 
@@ -250,10 +254,10 @@ class LogWrapper {
             const fmt = this.getFormat(args);
             const segs = this.getSegments(args);
             //Logger.loggerInstance.debug(fmt, ...segs);
-            if (Logger.loggerInstance.trace && Logger.loggerInstance != console) {
-                Logger.loggerInstance.trace(fmt, ...segs);
+            if (Logger.loggerInstance == console) {
+                console.log(fmt, ...segs);
             } else {
-                Logger.loggerInstance.debug(fmt, ...segs);
+                Logger.loggerInstance.trace(fmt, ...segs);
             }
         }
     }
