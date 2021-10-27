@@ -79,6 +79,8 @@ class Logger {
      * @static
      * @param {Object} config
      * @param {boolean} config.showDate
+     * @param {boolean} config.objToJson object转化为json字符串
+     * @param {boolean} config.noFormat 忽略格式字符, 避免不识别格式字符的平台上, 显示一堆'%s %s %O 等等'
      * @returns {undefined}
      */
     static setConfig(config) {
@@ -151,6 +153,11 @@ class LogWrapper {
                 format += '[' + this.MODULE_TAG + ']';
             }
 
+            if (Logger.config && Logger.config.noFormat) {
+                // 如果配置了noFormat, 则不添加后续的格式字符.
+                return format;
+            }
+
             if (typeof(args[i]) == 'string' && args[i].indexOf('[') >= 0) {
                 if (env == 'browser') {
                     format += '%c';
@@ -160,7 +167,11 @@ class LogWrapper {
             } else if (typeof(args[i]) == 'string' || typeof(args[i]) == 'number') {
                 format += ' %s';
             } else {
-                format += ' %O';
+                if (Logger.config && Logger.config.objToJson && typeof args[i] == 'object') {
+                    format += ' %s';
+                } else {
+                    format += ' %O';
+                }
             }
         }
 
@@ -196,10 +207,31 @@ class LogWrapper {
 
     getSegments(args) {
         return args.map((it) => {
-            if (typeof(it) == 'string' && it.indexOf('[') >= 0) {
+            if (typeof(it) == 'string' && it.indexOf('[') >= 0) {  // 颜色字符串
                 return this.transColor2Browser(it);
             } else {
-                return it;
+                if (Logger.config && Logger.config.objToJson && typeof it == 'object') {
+                    let cache = [];
+                    let strJson = JSON.stringify(it, function (key, value) {
+                        if (typeof value === 'object' && value !== null) {
+                            if (cache.indexOf(value) !== -1) {
+                                // 移除环形引用对象
+                                return;
+                            }
+                            // 收集所有的值
+                            cache.push(value);
+                        }/* else if (typeof value === 'function') {
+                            //return value.toString();
+                            return 'Function';
+                        }*/
+
+                        return value;
+                    });
+                    cache = null;
+                    return strJson;
+                } else {
+                    return it;
+                }
             }
         });
     }
