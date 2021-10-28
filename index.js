@@ -81,6 +81,7 @@ class Logger {
      * @param {boolean} config.showDate
      * @param {boolean} config.objToJson object转化为json字符串
      * @param {boolean} config.noFormat 忽略格式字符, 避免不识别格式字符的平台上, 显示一堆'%s %s %O 等等'
+     * @param {boolean} config.foldFunction 对于函数, 不打印函数体源码字符串, 而是只显示个 "Function" 字样
      * @returns {undefined}
      */
     static setConfig(config) {
@@ -209,29 +210,28 @@ class LogWrapper {
         return args.map((it) => {
             if (typeof(it) == 'string' && it.indexOf('[') >= 0) {  // 颜色字符串
                 return this.transColor2Browser(it);
-            } else {
-                if (Logger.config && Logger.config.objToJson && typeof it == 'object') {
-                    let cache = [];
-                    let strJson = JSON.stringify(it, function (key, value) {
-                        if (typeof value === 'object' && value !== null) {
-                            if (cache.indexOf(value) !== -1) {
-                                // 移除环形引用对象
-                                return;
-                            }
-                            // 收集所有的值
-                            cache.push(value);
-                        }/* else if (typeof value === 'function') {
-                            //return value.toString();
-                            return 'Function';
-                        }*/
+            } else if (Logger.config && Logger.config.objToJson && typeof it == 'object') {
+                let cache = [];
+                let strJson = JSON.stringify(it, function (key, value) {
+                    if (typeof value === 'object' && value !== null) {
+                        if (cache.indexOf(value) !== -1) {
+                            // 移除环形引用对象
+                            return;
+                        }
+                        // 收集所有的值
+                        cache.push(value);
+                    } else if (Logger.config && Logger.config.foldFunction && typeof it == 'function') {
+                        return 'Function';
+                    }
 
-                        return value;
-                    });
-                    cache = null;
-                    return strJson;
-                } else {
-                    return it;
-                }
+                    return value;
+                });
+                cache = null;
+                return strJson;
+            } else if (Logger.config && Logger.config.foldFunction && typeof it == 'function') {
+                return 'Function';
+            } else {
+                return it;
             }
         });
     }
